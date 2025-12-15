@@ -151,9 +151,176 @@
             <button class="popup_btn popup_yes">YES</button>
             <button class="popup_btn popup_no">NO</button>
           </div>
-          <div class="popup_click_label">CLICK</div>
+          <div class="popup_click_label">
+            <img src="/portfoilo_hr/img/project/click.png" alt="CLICK" />
+          </div>
+        </div>
+      </div>
+      <!-- //.popup_modal -->
+    </div>
+    <!-- //.popup_overlay -->
+
+    <!-- 로딩 팝업 -->
+    <div id="loading_overlay" class="popup_overlay">
+      <div class="popup_modal">
+        <div class="popup_header"></div>
+        <div class="popup_content">
+          <h2 class="loading_title">Downloading...</h2>
+          <div class="progress_container">
+            <div class="progress_bar" id="progress_bar"></div>
+          </div>
+          <div class="progress_text">
+            <span id="progress_percent">0%</span>
+            <span>100%</span>
+          </div>
         </div>
       </div>
     </div>
+    <!-- //.loading_overlay -->
+    <!-- 완료 팝업 -->
+    <div id="complete_overlay" class="popup_overlay">
+      <div class="popup_modal">
+        <div class="popup_header"></div>
+        <div class="popup_content">
+          <h2 class="complete_title">Complete!</h2>
+          <p class="complete_subtitle">Start streaming my tracklist.</p>
+          <button class="popup_btn complete_ok">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- //.complete_overlay -->
+<!-- 프로젝트 페이지 -->
+<section class="project_page">
+    <button class="back_to_album">
+    <i class="fa-solid fa-angle-left"></i> ALBUM CONTENTS
+  </button><!-- //.back_to_album -->
+  <div class="project_container">
+    <h1 class="project_header">
+      <span class="project_title">PROJECT</span>
+      <span class="project_name">HYERIN</span>
+    </h1>
+    
+    <div class="project_content">
+      <div class="project_left">
+        <div class="project_preview">
+          <img
+            src="/portfoilo_hr/img/project/NMK.png"
+            alt="Project Preview"
+            id="preview_image"
+          />
+        </div>
+      </div>
+
+      <div class="project_right">
+      <div class="track_list">
+        <div
+          class="track_item"
+          data-image="/portfoilo_hr/img/project/NMK.png"
+        >
+          <div class="track_info">
+            <span class="track_number">Track 1</span>
+            <span class="track_tag">TITLE</span>
+            <span class="track_name">NMK</span>
+            <span class="track_feat">Feat. Team Project</span>
+          </div>
+          <button class="track_play">
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+
+        <div
+          class="track_item"
+          data-image="/portfoilo_hr/img/project/od.png"
+        >
+          <div class="track_info">
+            <span class="track_number">Track 2</span>
+            <span class="track_name">OD</span>
+            <span class="track_feat">Feat. Team Project</span>
+          </div>
+          <button class="track_play">
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+
+        <div
+          class="track_item"
+          data-image="/portfoilo_hr/img/project/NMK.png"
+        >
+          <div class="track_info">
+            <span class="track_number">Track 3</span>
+            <span class="track_name">GS25</span>
+          </div>
+          <button class="track_play">
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+
+        <div
+          class="track_item"
+          data-image="/portfoilo_hr/img/project/NMK.png"
+        >
+          <div class="track_info">
+            <span class="track_number">Track 4</span>
+            <span class="track_name">INSTAGRAM</span>
+          </div>
+          <button class="track_play">
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //.project_container -->
+</section><!-- //.project_page -->
+<!-- POSTER 페이지 -->
+<section class="poster_page">
+  <div class="poster_scroll" id="posterScroll">
+    <h1 class="poster_title_sticky">MY ACADEMY ROUTINE</h1>
+
+    <!-- 스크롤 길이(타임라인) -->
+    <div class="poster_stage" id="posterStage">
+      <!-- 0 -->
+      <img
+        class="poster_reveal poster_loc"
+        data-step="0"
+        src="/portfoilo_hr/img/poster/location.png"
+        alt="location"
+      />
+
+      <!-- 1 -->
+      <img
+        class="poster_reveal poster_path"
+        data-step="1"
+        src="/portfoilo_hr/img/poster/Vector.png"
+        alt="path"
+      />
+
+      <!-- 2 -->
+      <img
+        class="poster_reveal poster_word_home"
+        data-step="2"
+        src="/portfoilo_hr/img/poster/Frame319.png"
+        alt="HOME"
+      />
+
+      <!-- 3 (사진1) -->
+      <img
+        class="poster_reveal poster_photo_1"
+        data-step="3"
+        src="/portfoilo_hr/img/poster/1bus.png"
+        alt="bus"
+      />
+
+      <!-- 4 (사진2 예시) -->
+      <img
+        class="poster_reveal poster_photo_2"
+        data-step="4"
+        src="/portfoilo_hr/img/poster/Frame307.png"
+        alt="academy"
+      />
+    </div>
+  </div>
+</section>
+
   </body>
 </html>
