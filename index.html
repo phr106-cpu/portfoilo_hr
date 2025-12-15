@@ -14,8 +14,7 @@
 
   <body>
     <div class="wrap">
-      <!-- 첫 번째 인트로 페이지 -->
-      <!-- 첫 번째 인트로 페이지 -->
+      <!-- 인트로 페이지 -->
       <section class="intro_page active">
         <div class="album_box">
           <img src="/portfoilo_hr/img/first/album.png" alt="Portfolio Album" />
@@ -85,7 +84,7 @@
           </div>
 
           <!-- CD - 2번 -->
-          <div class="content_item cd_item">
+          <div class="content_item cd_item" id="cd_trigger">
             <span class="item_number">2</span>
             <div class="item_hover_label">PROJECT</div>
             <img src="/portfoilo_hr/img/album_contents/cd.png" alt="CD" />
@@ -142,5 +141,19 @@
       <!-- //.album_contents -->
     </div>
     <!-- //.wrap -->
+    <!-- 팝업 모달 -->
+    <div id="popup_overlay" class="popup_overlay">
+      <div id="popup_modal" class="popup_modal">
+        <div class="popup_header"></div>
+        <div class="popup_content">
+          <h2 class="popup_title">Ready to stream this track?</h2>
+          <div class="popup_buttons">
+            <button class="popup_btn popup_yes">YES</button>
+            <button class="popup_btn popup_no">NO</button>
+          </div>
+          <div class="popup_click_label">CLICK</div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

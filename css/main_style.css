@@ -9,9 +9,17 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "BalooBhaina";
+  src: url("../font/BalooBhaina-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --pink: #f68fdf;
   --mint: #a3f0d5;
+  --font-baloo: "BalooBhaina", sans-serif;
 }
 
 * {
@@ -261,12 +269,12 @@ section.active {
 
 /* 앨범*/
 .album {
-  left: 0px;
+  left: -40px;
   top: -50px;
 }
 
 .album img {
-  max-width: 320px;
+  max-width: 300px;
 }
 
 /* 키링 */
@@ -292,7 +300,7 @@ section.active {
 /* 포토카드  */
 .photocard_item {
   left: -90px;
-  bottom: -35px;
+  bottom: -25px;
 }
 
 .photocard_item img {
@@ -478,7 +486,6 @@ section.active {
   top: 50px;
   right: 380px;
 }
-/* 호버 라벨 */
 .item_hover_label {
   position: fixed;
   background-color: var(--pink);
@@ -486,21 +493,130 @@ section.active {
   padding: 8px 16px;
   font-weight: bold;
   font-size: 16px;
-  letter-spacing: 1px;
   opacity: 0;
-  white-space: nowrap;
   pointer-events: none;
-  z-index: 9999; /* z-index 엄청 높게 */
-}
-
-.content_item:hover .item_hover_label {
-  opacity: 1;
+  z-index: 99999;
 }
 
 .content_item {
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .content_item:hover {
   transform: scale(1.05);
+  z-index: 9998;
+}
+.cursor_tooltip {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: var(--pink);
+  color: #fdffeb;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999999;
+  white-space: nowrap;
+}
+/* 팝업 오버레이 */
+.popup_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.popup_overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* 팝업 모달 */
+.popup_modal {
+  width: 90%;
+  max-width: 850px;
+  background-color: #fff;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.popup_header {
+  width: 100%;
+  height: 60px;
+  background-color: #d8d8e3;
+  border-radius: 30px 30px 0 0;
+}
+
+.popup_content {
+  padding: 60px 40px;
+  text-align: center;
+  position: relative;
+}
+
+.popup_title {
+  font-family: var(--font-baloo);
+  font-size: 48px;
+  font-weight: 900;
+  color: #2563eb;
+  margin-bottom: 40px;
+}
+
+.popup_buttons {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.popup_btn {
+  padding: 2px 50px;
+  font-family: var(--font-baloo);
+  font-size: 35px;
+  font-weight: 900;
+  color: #2563eb;
+  background-color: #c7d2fe;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.popup_btn:hover {
+  background-color: #a5b4fc;
+  transform: scale(1.05);
+}
+
+.popup_yes {
+  background-color: #c7d2fe;
+}
+
+.popup_no {
+  background-color: #c7d2fe;
+}
+
+.popup_click_label {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--pink);
+  color: #fdffeb;
+  padding: 12px 30px;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  border-radius: 8px;
 }
