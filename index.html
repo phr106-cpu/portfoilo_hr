@@ -1,326 +1,255 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio_hyerin</title>
-    <link rel="stylesheet" href="css/main_style.css" />
-    <script
-      src="https://kit.fontawesome.com/672e368b20.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/main.js" defer></script>
-  </head>
 
-  <body>
-    <div class="wrap">
-      <!-- 인트로 페이지 -->
-      <section class="intro_page active">
-        <div class="album_box">
-          <img src="/portfoilo_hr/img/first/album.png" alt="Portfolio Album" />
-        </div>
-        <div class="hover_label">
-          <span>CLICK TO START</span>
-        </div>
-      </section>
-      <!-- //.intro_page -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>portfolio_hyerin</title>
+  <link rel="stylesheet" href="css/main_style.css" />
+  <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
+  <script src="js/main.js" defer></script>
+</head>
 
-      <!-- 두 번째 언박싱 페이지 -->
-      <section class="unboxing_page">
-        <div class="portfolio_text">PORTFOLIO</div>
-        <img
-          src="/portfoilo_hr/img/first/parkhyerin.png"
-          alt="PARK HYERIN"
-          class="title_logo"
-        />
-        <img
-          src="/portfoilo_hr/img/first/album.png"
-          alt="Album"
-          class="center_album"
-        />
-        <img
-          src="/portfoilo_hr/img/first/Star1.png"
-          alt="Star"
-          class="star star_1"
-        />
-        <img
-          src="/portfoilo_hr/img/first/Star2.png"
-          alt="Star"
-          class="star star_2"
-        />
-      </section>
-      <!-- //.unboxing_page -->
-      <!-- 세 번째 앨범 구성품 페이지 -->
-      <section class="album_contents">
-        <div class="contents_header">
-          <h1 class="contents_title">ALBUM CONTENTS</h1>
-          <p class="contents_subtitle">
-            ALL DESIGNED & PRODUCED BY PARK HYERIN
-          </p>
-          <img
-            src="/portfoilo_hr/img/album_contents/logo.png"
-            alt="HYERIN"
-            class="hyerin_logo"
-          />
+<body>
+  <div class="wrap">
+    <!-- 인트로 페이지 -->
+    <section class="intro_page active">
+      <div class="album_box">
+        <img src="/portfoilo_hr/img/first/album.png" alt="Portfolio Album" />
+      </div>
+      <div class="hover_label">
+        <span>CLICK TO START</span>
+      </div>
+    </section>
+    <!-- //.intro_page -->
+
+    <!-- 두 번째 언박싱 페이지 -->
+    <section class="unboxing_page">
+      <div class="portfolio_text">PORTFOLIO</div>
+      <img src="/portfoilo_hr/img/first/parkhyerin.png" alt="PARK HYERIN" class="title_logo" />
+      <img src="/portfoilo_hr/img/first/album.png" alt="Album" class="center_album" />
+      <img src="/portfoilo_hr/img/first/Star1.png" alt="Star" class="star star_1" />
+      <img src="/portfoilo_hr/img/first/Star2.png" alt="Star" class="star star_2" />
+    </section>
+    <!-- //.unboxing_page -->
+    <!-- 세 번째 앨범 구성품 페이지 -->
+    <section class="album_contents">
+      <div class="contents_header">
+        <h1 class="contents_title">ALBUM CONTENTS</h1>
+        <p class="contents_subtitle">
+          ALL DESIGNED & PRODUCED BY PARK HYERIN
+        </p>
+        <img src="/portfoilo_hr/img/album_contents/logo.png" alt="HYERIN" class="hyerin_logo" />
+      </div>
+
+      <div class="contents_grid">
+        <div class="content_item album">
+          <img src="/portfoilo_hr/img/first/album.png" alt="Album Box" />
+        </div>
+        <!-- 키링 - 1번 -->
+        <div class="content_item keyring_item">
+          <span class="item_number">1</span>
+          <div class="item_hover_label">ABOUT ME</div>
+          <!-- 이게 있어야 함 -->
+          <img src="/portfoilo_hr/img/album_contents/hyerindoll.png" alt="HYERIN KEYRING" />
+          <div class="item_info">
+            <h3>HYERIN KEYRING</h3>
+            <p>180*90(mm)</p>
+          </div>
         </div>
 
-        <div class="contents_grid">
-          <div class="content_item album">
-            <img src="/portfoilo_hr/img/first/album.png" alt="Album Box" />
-          </div>
-          <!-- 키링 - 1번 -->
-          <div class="content_item keyring_item">
-            <span class="item_number">1</span>
-            <div class="item_hover_label">ABOUT ME</div>
-            <!-- 이게 있어야 함 -->
-            <img
-              src="/portfoilo_hr/img/album_contents/hyerindoll.png"
-              alt="HYERIN KEYRING"
-            />
-            <div class="item_info">
-              <h3>HYERIN KEYRING</h3>
-              <p>180*90(mm)</p>
-            </div>
-          </div>
-
-          <!-- CD - 2번 -->
-          <div class="content_item cd_item" id="cd_trigger">
-            <span class="item_number">2</span>
-            <div class="item_hover_label">PROJECT</div>
-            <img src="/portfoilo_hr/img/album_contents/cd.png" alt="CD" />
-            <div class="item_info">
-              <h3>CD</h3>
-              <p>1EA</p>
-            </div>
-          </div>
-
-          <!-- 포토카드 - 3번 -->
-          <div class="content_item photocard_item">
-            <span class="item_number">3</span>
-            <div class="item_hover_label">My Traits</div>
-            <img
-              src="/portfoilo_hr/img/album_contents/photocard.png"
-              alt="PHOTO CARD"
-            />
-            <div class="item_info">
-              <h3>PHOTO CARD</h3>
-              <p>55*85(mm) / 3EA</p>
-            </div>
-          </div>
-
-          <!-- 스티커 - 4번 -->
-          <div class="content_item sticker_item">
-            <span class="item_number">4</span>
-            <div class="item_hover_label">My Faves</div>
-            <img
-              src="/portfoilo_hr/img/album_contents/stiker.png"
-              alt="STICKER"
-            />
-            <div class="item_info">
-              <h3>STICKER</h3>
-              <p>1EA</p>
-            </div>
-          </div>
-
-          <!-- 포스터 - 5번 -->
-          <div class="content_item poster_item">
-            <span class="item_number">5</span>
-            <div class="item_hover_label">My Academy Story</div>
-            <img
-              src="/portfoilo_hr/img/album_contents/posters.png"
-              alt="POSTER"
-            />
-            <div class="item_info">
-              <h3>POSTER</h3>
-              <p>1EA</p>
-            </div>
+        <!-- CD - 2번 -->
+        <div class="content_item cd_item" id="cd_trigger">
+          <span class="item_number">2</span>
+          <div class="item_hover_label">PROJECT</div>
+          <img src="/portfoilo_hr/img/album_contents/cd.png" alt="CD" />
+          <div class="item_info">
+            <h3>CD</h3>
+            <p>1EA</p>
           </div>
         </div>
-        <!-- //.contents_grid -->
-      </section>
-      <!-- //.album_contents -->
-    </div>
-    <!-- //.wrap -->
-    <!-- 팝업 모달 -->
-    <div id="popup_overlay" class="popup_overlay">
-      <div id="popup_modal" class="popup_modal">
-        <div class="popup_header"></div>
-        <div class="popup_content">
-          <h2 class="popup_title">Ready to stream this track?</h2>
-          <div class="popup_buttons">
-            <button class="popup_btn popup_yes">YES</button>
-            <button class="popup_btn popup_no">NO</button>
+
+        <!-- 포토카드 - 3번 -->
+        <div class="content_item photocard_item">
+          <span class="item_number">3</span>
+          <div class="item_hover_label">My Traits</div>
+          <img src="/portfoilo_hr/img/album_contents/photocard.png" alt="PHOTO CARD" />
+          <div class="item_info">
+            <h3>PHOTO CARD</h3>
+            <p>55*85(mm) / 3EA</p>
           </div>
-          <div class="popup_click_label">
-            <img src="/portfoilo_hr/img/project/click.png" alt="CLICK" />
+        </div>
+
+        <!-- 스티커 - 4번 -->
+        <div class="content_item sticker_item">
+          <span class="item_number">4</span>
+          <div class="item_hover_label">My Faves</div>
+          <img src="/portfoilo_hr/img/album_contents/stiker.png" alt="STICKER" />
+          <div class="item_info">
+            <h3>STICKER</h3>
+            <p>1EA</p>
+          </div>
+        </div>
+
+        <!-- 포스터 - 5번 -->
+        <div class="content_item poster_item">
+          <span class="item_number">5</span>
+          <div class="item_hover_label">My Academy Story</div>
+          <img src="/portfoilo_hr/img/album_contents/posters.png" alt="POSTER" />
+          <div class="item_info">
+            <h3>POSTER</h3>
+            <p>1EA</p>
           </div>
         </div>
       </div>
-      <!-- //.popup_modal -->
+      <!-- //.contents_grid -->
+    </section>
+    <!-- //.album_contents -->
+  </div>
+  <!-- //.wrap -->
+  <!-- 팝업 모달 -->
+  <div id="popup_overlay" class="popup_overlay">
+    <div id="popup_modal" class="popup_modal">
+      <div class="popup_header"></div>
+      <div class="popup_content">
+        <h2 class="popup_title">Ready to stream this track?</h2>
+        <div class="popup_buttons">
+          <button class="popup_btn popup_yes">YES</button>
+          <button class="popup_btn popup_no">NO</button>
+        </div>
+        <div class="popup_click_label">
+          <img src="/portfoilo_hr/img/project/click.png" alt="CLICK" />
+        </div>
+      </div>
     </div>
-    <!-- //.popup_overlay -->
+    <!-- //.popup_modal -->
+  </div>
+  <!-- //.popup_overlay -->
 
-    <!-- 로딩 팝업 -->
-    <div id="loading_overlay" class="popup_overlay">
-      <div class="popup_modal">
-        <div class="popup_header"></div>
-        <div class="popup_content">
-          <h2 class="loading_title">Downloading...</h2>
-          <div class="progress_container">
-            <div class="progress_bar" id="progress_bar"></div>
-          </div>
-          <div class="progress_text">
-            <span id="progress_percent">0%</span>
-            <span>100%</span>
-          </div>
+  <!-- 로딩 팝업 -->
+  <div id="loading_overlay" class="popup_overlay">
+    <div class="popup_modal">
+      <div class="popup_header"></div>
+      <div class="popup_content">
+        <h2 class="loading_title">Downloading...</h2>
+        <div class="progress_container">
+          <div class="progress_bar" id="progress_bar"></div>
+        </div>
+        <div class="progress_text">
+          <span id="progress_percent">0%</span>
+          <span>100%</span>
         </div>
       </div>
     </div>
-    <!-- //.loading_overlay -->
-    <!-- 완료 팝업 -->
-    <div id="complete_overlay" class="popup_overlay">
-      <div class="popup_modal">
-        <div class="popup_header"></div>
-        <div class="popup_content">
-          <h2 class="complete_title">Complete!</h2>
-          <p class="complete_subtitle">Start streaming my tracklist.</p>
-          <button class="popup_btn complete_ok">OK</button>
-        </div>
+  </div>
+  <!-- //.loading_overlay -->
+  <!-- 완료 팝업 -->
+  <div id="complete_overlay" class="popup_overlay">
+    <div class="popup_modal">
+      <div class="popup_header"></div>
+      <div class="popup_content">
+        <h2 class="complete_title">Complete!</h2>
+        <p class="complete_subtitle">Start streaming my tracklist.</p>
+        <button class="popup_btn complete_ok">OK</button>
       </div>
     </div>
-    <!-- //.complete_overlay -->
-<!-- 프로젝트 페이지 -->
-<section class="project_page">
+  </div>
+  <!-- //.complete_overlay -->
+  <!-- 프로젝트 페이지 -->
+  <section class="project_page">
     <button class="back_to_album">
-    <i class="fa-solid fa-angle-left"></i> ALBUM CONTENTS
-  </button><!-- //.back_to_album -->
-  <div class="project_container">
-    <h1 class="project_header">
-      <span class="project_title">PROJECT</span>
-      <span class="project_name">HYERIN</span>
-    </h1>
-    
-    <div class="project_content">
-      <div class="project_left">
-        <div class="project_preview">
-          <img
-            src="/portfoilo_hr/img/project/NMK.png"
-            alt="Project Preview"
-            id="preview_image"
-          />
+      <i class="fa-solid fa-angle-left"></i> ALBUM CONTENTS
+    </button><!-- //.back_to_album -->
+    <div class="project_container">
+      <h1 class="project_header">
+        <span class="project_title">PROJECT</span>
+        <span class="project_name">HYERIN</span>
+      </h1>
+
+      <div class="project_content">
+        <div class="project_left">
+          <div class="project_preview">
+            <img src="/portfoilo_hr/img/project/NMK.png" alt="Project Preview" id="preview_image" />
+          </div>
+        </div>
+
+        <div class="project_right">
+          <div class="track_list">
+            <div class="track_item" data-image="/portfoilo_hr/img/project/NMK.png">
+              <div class="track_info">
+                <span class="track_number">Track 1</span>
+                <span class="track_tag">TITLE</span>
+                <span class="track_name">NMK</span>
+                <span class="track_feat">Feat. Team Project</span>
+              </div>
+              <button class="track_play">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+
+            <div class="track_item" data-image="/portfoilo_hr/img/project/od.png">
+              <div class="track_info">
+                <span class="track_number">Track 2</span>
+                <span class="track_name">OD</span>
+                <span class="track_feat">Feat. Team Project</span>
+              </div>
+              <button class="track_play">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+
+            <div class="track_item" data-image="/portfoilo_hr/img/project/NMK.png">
+              <div class="track_info">
+                <span class="track_number">Track 3</span>
+                <span class="track_name">GS25</span>
+              </div>
+              <button class="track_play">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+
+            <div class="track_item" data-image="/portfoilo_hr/img/project/NMK.png">
+              <div class="track_info">
+                <span class="track_number">Track 4</span>
+                <span class="track_name">INSTAGRAM</span>
+              </div>
+              <button class="track_play">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+      <!-- //.project_container -->
+  </section><!-- //.project_page -->
+  <!-- POSTER 페이지 -->
+  <section class="poster_page">
+    <div class="poster_scroll" id="posterScroll">
+      <h1 class="poster_title_sticky">MY ACADEMY ROUTINE</h1>
 
-      <div class="project_right">
-      <div class="track_list">
-        <div
-          class="track_item"
-          data-image="/portfoilo_hr/img/project/NMK.png"
-        >
-          <div class="track_info">
-            <span class="track_number">Track 1</span>
-            <span class="track_tag">TITLE</span>
-            <span class="track_name">NMK</span>
-            <span class="track_feat">Feat. Team Project</span>
-          </div>
-          <button class="track_play">
-            <i class="fas fa-play"></i>
-          </button>
-        </div>
+      <!-- 스크롤 길이(타임라인) -->
+      <div class="poster_stage" id="posterStage">
+        <!-- 0 -->
+        <img class="poster_reveal poster_loc" data-step="0" src="/portfoilo_hr/img/poster/location.png"
+          alt="location" />
 
-        <div
-          class="track_item"
-          data-image="/portfoilo_hr/img/project/od.png"
-        >
-          <div class="track_info">
-            <span class="track_number">Track 2</span>
-            <span class="track_name">OD</span>
-            <span class="track_feat">Feat. Team Project</span>
-          </div>
-          <button class="track_play">
-            <i class="fas fa-play"></i>
-          </button>
-        </div>
+        <!-- 1 -->
+        <img class="poster_reveal poster_path" data-step="1" src="/portfoilo_hr/img/poster/Vector.png" alt="path" />
 
-        <div
-          class="track_item"
-          data-image="/portfoilo_hr/img/project/NMK.png"
-        >
-          <div class="track_info">
-            <span class="track_number">Track 3</span>
-            <span class="track_name">GS25</span>
-          </div>
-          <button class="track_play">
-            <i class="fas fa-play"></i>
-          </button>
-        </div>
+        <!-- 2 -->
+        <img class="poster_reveal poster_word_home" data-step="2" src="/portfoilo_hr/img/poster/Frame319.png"
+          alt="HOME" />
 
-        <div
-          class="track_item"
-          data-image="/portfoilo_hr/img/project/NMK.png"
-        >
-          <div class="track_info">
-            <span class="track_number">Track 4</span>
-            <span class="track_name">INSTAGRAM</span>
-          </div>
-          <button class="track_play">
-            <i class="fas fa-play"></i>
-          </button>
-        </div>
+        <!-- 3 (사진1) -->
+        <img class="poster_reveal poster_photo_1" data-step="3" src="/portfoilo_hr/img/poster/1bus.png" alt="bus" />
+
+        <!-- 4 (사진2 예시) -->
+        <img class="poster_reveal poster_photo_2" data-step="4" src="/portfoilo_hr/img/poster/Frame307.png"
+          alt="academy" />
       </div>
     </div>
-  </div>
-  <!-- //.project_container -->
-</section><!-- //.project_page -->
-<!-- POSTER 페이지 -->
-<section class="poster_page">
-  <div class="poster_scroll" id="posterScroll">
-    <h1 class="poster_title_sticky">MY ACADEMY ROUTINE</h1>
+  </section>
 
-    <!-- 스크롤 길이(타임라인) -->
-    <div class="poster_stage" id="posterStage">
-      <!-- 0 -->
-      <img
-        class="poster_reveal poster_loc"
-        data-step="0"
-        src="/portfoilo_hr/img/poster/location.png"
-        alt="location"
-      />
+</body>
 
-      <!-- 1 -->
-      <img
-        class="poster_reveal poster_path"
-        data-step="1"
-        src="/portfoilo_hr/img/poster/Vector.png"
-        alt="path"
-      />
-
-      <!-- 2 -->
-      <img
-        class="poster_reveal poster_word_home"
-        data-step="2"
-        src="/portfoilo_hr/img/poster/Frame319.png"
-        alt="HOME"
-      />
-
-      <!-- 3 (사진1) -->
-      <img
-        class="poster_reveal poster_photo_1"
-        data-step="3"
-        src="/portfoilo_hr/img/poster/1bus.png"
-        alt="bus"
-      />
-
-      <!-- 4 (사진2 예시) -->
-      <img
-        class="poster_reveal poster_photo_2"
-        data-step="4"
-        src="/portfoilo_hr/img/poster/Frame307.png"
-        alt="academy"
-      />
-    </div>
-  </div>
-</section>
-
-  </body>
 </html>
