@@ -26,6 +26,7 @@ body {
   overflow: hidden;
   width: 100vw;
   height: 100vh;
+  background-image: url(/portfoilo_hr/img/bg_star.png);
 }
 
 /* 공통 섹션 스타일 */
@@ -93,6 +94,8 @@ section.active {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background-image: url(../img/first/first_bg.png); */
+  background-image: url(../img/first/bgver2.png);
 }
 
 .portfolio_text {
@@ -146,9 +149,9 @@ section.active {
 
 .star_2 {
   width: 150px;
-  right: 16%; /* 18% → 16% */
+  right: 34%;
   top: 70%;
-  z-index: 15;
+  z-index: 5;
 }
 
 /* ===== 애니메이션 ===== */
@@ -185,4 +188,319 @@ section.active {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ===== 세 번째 앨범 구성품 페이지 ===== */
+.album_contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 80px 100px;
+  /* background-color: #444; */
+  background-image: url(/portfoilo_hr/img/bg_star.png);
+  position: relative;
+}
+
+.contents_header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+
+.contents_title {
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--pink);
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1;
+}
+
+.contents_subtitle {
+  /* font-family: "Albert Sans", sans-serif; */
+  font-size: 20px;
+  font-weight: 300;
+  color: #919191;
+  margin: 10px 0 0 0;
+  position: absolute;
+  top: 150px;
+  left: 100px;
+}
+
+.hyerin_logo {
+  width: 200px;
+  height: auto;
+  margin-right: 40px;
+}
+
+.contents_grid {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: 600px;
+  margin-top: 40px;
+}
+
+/* 각 아이템 배치 */
+.content_item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content_item img {
+  width: auto;
+  height: auto;
+}
+
+/* 앨범*/
+.album {
+  left: 0px;
+  top: -50px;
+}
+
+.album img {
+  max-width: 320px;
+}
+
+/* 키링 */
+.keyring_item {
+  left: 480px;
+  top: -10px;
+}
+
+.keyring_item img {
+  max-width: 330px;
+}
+
+/* CD */
+.cd_item {
+  right: 60px;
+  top: -50px;
+}
+
+.cd_item img {
+  max-width: 300px;
+}
+
+/* 포토카드  */
+.photocard_item {
+  left: -90px;
+  bottom: -35px;
+}
+
+.photocard_item img {
+  max-width: 380px;
+}
+
+/* 스티커  */
+.sticker_item {
+  left: 520px;
+  bottom: -50px;
+}
+
+.sticker_item img {
+  max-width: 480px;
+}
+
+/* 포스터 */
+.poster_item {
+  right: -100px;
+  bottom: -70px;
+}
+
+.poster_item img {
+  max-width: 350px;
+}
+
+/* 텍스트 위치 */
+.item_info {
+  position: absolute;
+  text-align: left;
+}
+
+.item_info h3 {
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #919191;
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+}
+
+.item_info p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #919191;
+  margin: 0;
+}
+
+/* 키링 텍스트 */
+.keyring_item .item_info {
+  bottom: 70px;
+  left: 125%;
+  transform: translateX(-50%);
+  text-align: left;
+}
+
+/* CD 텍스트  */
+.cd_item .item_info {
+  bottom: 50px;
+  right: -40px;
+  text-align: right;
+}
+
+/* 포토카드 텍스트 */
+.photocard_item .item_info {
+  bottom: -0px;
+  left: 400px;
+  text-align: left;
+}
+
+/* 스티커 텍스트 */
+.sticker_item .item_info {
+  bottom: 0px;
+  left: 20%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+/* 포스터 텍스트  */
+.poster_item .item_info {
+  bottom: 80px;
+  right: -80px;
+  text-align: left;
+}
+/* 스크롤 전환 애니메이션 */
+.unboxing_page.scroll_down {
+  animation: slideOutUp 0.6s ease-in-out forwards;
+}
+
+.album_contents.scroll_up {
+  animation: slideInDown 0.6s ease-in-out forwards;
+}
+
+.album_contents.scroll_down_back {
+  animation: slideOutDown 0.6s ease-in-out forwards;
+}
+
+.unboxing_page.scroll_up_back {
+  animation: slideInUp 0.6s ease-in-out forwards;
+}
+
+@keyframes slideOutUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* 번호 동그라미 */
+.item_number {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background-color: #fff9c7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--pink);
+  z-index: 10;
+}
+
+/* 각 아이템별 번호 위치 */
+.keyring_item .item_number {
+  top: -20px;
+  left: -40px;
+}
+
+.cd_item .item_number {
+  top: -0px;
+  right: 300px;
+}
+
+.photocard_item .item_number {
+  top: 0px;
+  left: -60px;
+}
+
+.sticker_item .item_number {
+  top: 30px;
+  left: -40px;
+}
+
+.poster_item .item_number {
+  top: 50px;
+  right: 380px;
+}
+/* 호버 라벨 */
+.item_hover_label {
+  position: fixed;
+  background-color: var(--pink);
+  color: #fdffeb;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9999; /* z-index 엄청 높게 */
+}
+
+.content_item:hover .item_hover_label {
+  opacity: 1;
+}
+
+.content_item {
+  cursor: pointer;
+}
+
+.content_item:hover {
+  transform: scale(1.05);
 }
