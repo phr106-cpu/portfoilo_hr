@@ -954,11 +954,11 @@ section.active {
 /* 타이틀 */
 .poster_title {
   position: absolute;
-  top: 3%;
+  top: 4%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  font-size: 60px;
+  font-size: 65px;
   font-weight: 900;
   letter-spacing: 2px;
   color: #3b3b3b;
@@ -976,13 +976,13 @@ section.active {
   padding-top: 180px;
 }
 
-/* 공통 reveal 애니메이션 - 일단 다 보이게 */
+/* 공통 reveal 애니메이션  */
 .poster_reveal {
   position: absolute;
-  opacity: 1;
-  /* 0에서 1로 변경 */
-  /* transition: opacity 0.7s ease, transform 0.7s ease; */
-  /* will-change: opacity, transform; */
+  opacity: 0;
+  /* 1에서 0으로 변경 - 처음에 안 보이게 */
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
 }
 
 .poster_reveal.show {
@@ -993,8 +993,8 @@ section.active {
 
 /* 위치 아이콘 - CHEONAN + HOME */
 .poster_loc {
-  width: 280px;
-  top: 12%;
+  width: 300px;
+  top: 14%;
   left: 6%;
   transform: translateY(30px);
 }
@@ -1016,39 +1016,39 @@ section.active {
 
 /* 첫 번째 벡터 */
 .poster_vector_1 {
-  top: 21%;
-  left: 27%;
+  top: 25%;
+  left: 30%;
   z-index: 3;
-  transform: rotate(-20deg) scale(0.9);
+  transform: rotate(5deg) scale(0.9);
 }
 
 
 .poster_vector_1.show {
-  transform: rotate(-20deg) scale(1);
+  transform: rotate(5deg) scale(1);
 }
 
 /* 두 번째 벡터 */
 .poster_vector_2 {
-  top: 22%;
+  top: 28%;
   left: 35%;
   z-index: 3;
-  transform: rotate(-35deg) scale(0.9);
+  transform: rotate(5deg) scale(0.9);
 }
 
 .poster_vector_2.show {
-  transform: rotate(-30deg) scale(1);
+  transform: rotate(5deg) scale(1);
 }
 
 /* 세 번째 벡터 */
 .poster_vector_3 {
-  top: 22.5%;
-  left: 43%;
+  top: 31.5%;
+  left: 40%;
   z-index: 10;
-  transform: rotate(-40deg) scale(0.9);
+  transform: rotate(5deg) scale(0.9);
 }
 
 .poster_vector_3.show {
-  transform: rotate(-40deg) scale(1);
+  transform: rotate(5deg) scale(1);
 }
 
 /* 사진 공통 스타일 */
@@ -1062,10 +1062,10 @@ section.active {
 
 /* 버스 정류장 사진 */
 .poster_photo_busstop {
-  width: 23%;
+  width: 320px;
   max-width: 320px;
-  top: 14%;
-  left: 49%;
+  top: 20%;
+  left: 46%;
   z-index: 4;
   transform: rotate(-3deg) scale(0.95);
 }
@@ -1076,28 +1076,251 @@ section.active {
 
 /* 티켓 사진 (버스정류장 위에 약간 겹침) */
 .poster_photo_ticket {
-  width: 20%;
+  width: 250px;
   max-width: 300px;
-  top: 10%;
-  left: 66%;
+  top: 13%;
+  left: 63%;
   z-index: 5;
-  transform: rotate(5deg) scale(0.95);
+  transform: rotate(-5deg) scale(0.95);
 }
 
 .poster_photo_ticket.show {
-  transform: rotate(5deg) scale(1);
+  transform: rotate(-5deg) scale(1);
 }
 
 /* 버스 사진 */
 .poster_photo_bus {
-  width: 26%;
+  width: 350px;
   max-width: 340px;
-  top: 20%;
-  left: 70%;
+  top: 24%;
+  left: 66%;
   z-index: 6;
-  transform: rotate(-2deg) scale(0.95);
+  transform: rotate(10deg) scale(0.95);
 }
 
 .poster_photo_bus.show {
+  transform: rotate(10deg) scale(1);
+}
+
+/* 네 번째 벡터 - 아래로 */
+.poster_vector_4 {
+  top: 44%;
+  right: 15%;
+  z-index: 3;
+  transform: rotate(-110deg) scale(0.9);
+}
+
+.poster_vector_4.show {
+  transform: rotate(-110deg) scale(1);
+}
+
+
+/* SEOUL + academy 텍스트 */
+.poster_aca {
+  width: 320px;
+  top: 48%;
+  right: 9%;
+  z-index: 4;
+  transform: translateY(30px);
+}
+
+.poster_aca.show {
+  transform: translateY(0);
+}
+
+/* 학원 사진 공통 스타일 */
+.poster_academy_photo {
+  transform: scale(0.95);
+}
+
+.poster_academy_photo.show {
+  transform: scale(1);
+}
+
+/* 학원 사진 1 - 수업 듣는 모습 */
+.poster_academy_1 {
+  width: 400px;
+  top: 55%;
+  left: 5%;
+  z-index: 5;
+  transform: rotate(2deg) scale(0.95);
+}
+
+.poster_academy_1.show {
+  transform: rotate(2deg) scale(1);
+}
+
+/* 학원 사진 2 - 커피 */
+.poster_academy_2 {
+  width: 280px;
+  top: 58%;
+  left: 36%;
+  z-index: 6;
+  transform: rotate(-3deg) scale(0.95);
+}
+
+.poster_academy_2.show {
+  transform: rotate(-3deg) scale(1);
+}
+
+/* 학원 사진 3 - 피그마 작업 */
+.poster_academy_3 {
+  width: 380px;
+  top: 67%;
+  left: 50%;
+  z-index: 7;
+  transform: rotate(4deg) scale(0.95);
+}
+
+.poster_academy_3.show {
+  transform: rotate(4deg) scale(1);
+}
+
+/* 학원 사진 4 - 단체 사진 */
+.poster_academy_4 {
+  width: 350px;
+  top: 70%;
+  left: 24%;
+  z-index: 8;
+  transform: rotate(-2deg) scale(0.95);
+}
+
+.poster_academy_4.show {
   transform: rotate(-2deg) scale(1);
+}
+
+/* 학원 사진 5 - 수업 듣는 모습2 */
+.poster_academy_5 {
+  width: 300px;
+  max-width: 310px;
+  top: 67%;
+  left: 6%;
+  z-index: 9;
+  transform: rotate(-0deg) scale(0.95);
+}
+
+.poster_academy_5.show {
+  transform: rotate(-10deg) scale(1);
+}
+
+/* 학원 사진 6 - 팀 작업 */
+.poster_academy_6 {
+  width: 380px;
+  top: 77%;
+  left: 35%;
+  z-index: 10;
+  transform: rotate(10deg) scale(0.95);
+}
+
+.poster_academy_6.show {
+  transform: rotate(10deg) scale(1);
+}
+
+/* 일곱 번째 벡터 */
+.poster_vector_7 {
+  top: 91%;
+  left: 25%;
+  z-index: 3;
+  transform: rotate(5deg) scale(0.9);
+}
+
+.poster_vector_7.show {
+  transform: rotate(5deg) scale(1);
+}
+
+/* 여덟 번째 벡터 */
+.poster_vector_8 {
+  top: 95%;
+  left: 20%;
+  z-index: 3;
+  /* transform: rotate(2deg) scale(0.9); */
+}
+
+.poster_vector_8.show {
+  /* transform: rotate(2deg) scale(0.9); */
+}
+
+/* 아홉 번째 벡터 */
+.poster_vector_9 {
+  top: 88%;
+  left: 18%;
+  z-index: 3;
+  transform: rotate(10deg);
+}
+
+.poster_vector_9.show {
+  transform: rotate(10deg);
+}
+
+
+/* gotohome 이미지 */
+.poster_gotohome {
+  width: 360px;
+  top: 95%;
+  left: 20%;
+  z-index: 6;
+  transform: rotate(-3deg) scale(0.95);
+}
+
+.poster_gotohome.show {
+  transform: rotate(-3deg) scale(1);
+}
+
+/* 3home 이미지 */
+.poster_3home {
+  width: 380px;
+  top: 100%;
+  left: 37%;
+  z-index: 7;
+  transform: rotate(12deg) scale(0.95);
+}
+
+.poster_3home.show {
+  transform: rotate(12deg) scale(0.95);
+}
+
+/* location (CHEONAN + HOME) */
+.poster_home_location {
+  width: 310px;
+  top: 100%;
+  right: 6%;
+  z-index: 8;
+  transform: translateY(30px);
+}
+
+.poster_home_location.show {
+  /* transform: translateY(0); */
+}
+
+/* IN ACADEMY 텍스트 */
+.poster_inaca {
+  width: 220px;
+  top: 55%;
+  left: 5%;
+  z-index: 11;
+  transform: translateY(20px);
+}
+
+.poster_inaca.show {
+  transform: translateY(0);
+}
+
+/* 별 공통 스타일 */
+.poster_star {
+  width: 60px;
+  z-index: 12;
+}
+
+
+
+/* 초록 별 - 오른쪽 위 */
+.poster_greenstar {
+  top: 56%;
+  right: 59%;
+}
+
+/* 핑크 별 - 왼쪽 아래 */
+.poster_pinkstar {
+  top: 80%;
+  left: 5%;
 }

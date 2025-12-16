@@ -272,11 +272,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const stageRect = posterStage.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
 
+    // 스크롤 진행도 계산 (0 ~ 1)
     const scrollProgress = Math.max(0, Math.min(1,
       (viewportHeight - stageRect.top) / (viewportHeight + stageRect.height)
     ));
 
-    const maxStep = posterReveals.length - 1;
+    // 현재 스텝 계산 (총 27개 요소: 0~26)
+    const maxStep = 26;
     const currentStep = Math.floor(scrollProgress * (maxStep + 1));
 
     posterReveals.forEach((el) => {
@@ -303,22 +305,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
       setTimeout(function () {
         posterPage.classList.add("active");
+        document.body.style.overflow = "auto"; // body 스크롤 허용
         window.scrollTo(0, 0);
-        setTimeout(updatePosterReveal, 50);
+
+        // 처음 페이지 로드시 location(0)만 보이게
+        setTimeout(function () {
+          updatePosterReveal();
+        }, 50);
       }, 300);
     });
   }
 });
-if (posterItem && posterPage && album_contents) {
-  posterItem.addEventListener("click", function () {
-    console.log("포스터 아이템 클릭됨");
-    album_contents.classList.remove("active");
-
-    setTimeout(function () {
-      posterPage.classList.add("active");
-      document.body.style.overflow = "auto"; // body 스크롤 허용
-      window.scrollTo(0, 0);
-      setTimeout(updatePosterReveal, 50);
-    }, 300);
-  });
-}
