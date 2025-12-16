@@ -225,31 +225,46 @@
   <!-- POSTER 페이지 -->
   <section class="poster_page">
     <div class="poster_scroll" id="posterScroll">
-      <h1 class="poster_title_sticky">MY ACADEMY ROUTINE</h1>
+      <!-- 종이 배경과 모든 콘텐츠를 담는 컨테이너 -->
+      <div class="poster_paper_container">
+        <img src="/portfoilo_hr/img/poster/paper.png" alt="Paper Background" class="poster_paper_bg" />
 
-      <!-- 스크롤 길이(타임라인) -->
-      <div class="poster_stage" id="posterStage">
-        <!-- 0 -->
-        <img class="poster_reveal poster_loc" data-step="0" src="/portfoilo_hr/img/poster/location.png"
-          alt="location" />
+        <!-- 타이틀 -->
+        <h1 class="poster_title">MY ACADEMY ROUTINE</h1>
 
-        <!-- 1 -->
-        <img class="poster_reveal poster_path" data-step="1" src="/portfoilo_hr/img/poster/Vector.png" alt="path" />
+        <!-- 스크롤 콘텐츠 -->
+        <div class="poster_stage" id="posterStage">
+          <!-- 0 - 위치 아이콘 (CHEONAN + HOME) -->
+          <img class="poster_reveal poster_loc" data-step="0" src="/portfoilo_hr/img/poster/location.png"
+            alt="location" />
 
-        <!-- 2 -->
-        <img class="poster_reveal poster_word_home" data-step="2" src="/portfoilo_hr/img/poster/Frame319.png"
-          alt="HOME" />
+          <!-- 1 - 첫 번째 벡터 라인 -->
+          <img class="poster_reveal poster_vector poster_vector_1" data-step="1"
+            src="/portfoilo_hr/img/poster/Vector.png" alt="vector1" />
 
-        <!-- 3 (사진1) -->
-        <img class="poster_reveal poster_photo_1" data-step="3" src="/portfoilo_hr/img/poster/1bus.png" alt="bus" />
+          <!-- 2 - 두 번째 벡터 라인 -->
+          <img class="poster_reveal poster_vector poster_vector_2" data-step="2"
+            src="/portfoilo_hr/img/poster/Vector.png" alt="vector2" />
 
-        <!-- 4 (사진2 예시) -->
-        <img class="poster_reveal poster_photo_2" data-step="4" src="/portfoilo_hr/img/poster/Frame307.png"
-          alt="academy" />
+          <!-- 3 - 세 번째 벡터 라인 -->
+          <img class="poster_reveal poster_vector poster_vector_3" data-step="3"
+            src="/portfoilo_hr/img/poster/Vector.png" alt="vector3" />
+
+          <!-- 4 - 버스 정류장 사진 -->
+          <img class="poster_reveal poster_photo poster_photo_busstop" data-step="4"
+            src="/portfoilo_hr/img/poster/1busstop.png" alt="busstop" />
+
+          <!-- 5 - 티켓 사진 (버스정류장 위에 겹침) -->
+          <img class="poster_reveal poster_photo poster_photo_ticket" data-step="5"
+            src="/portfoilo_hr/img/poster/1ticket.png" alt="ticket" />
+
+          <!-- 6 - 버스 사진 (티켓 위에 겹침) -->
+          <img class="poster_reveal poster_photo poster_photo_bus" data-step="6" src="/portfoilo_hr/img/poster/1bus.png"
+            alt="bus" />
+        </div>
       </div>
     </div>
   </section>
-
 </body>
 
 </html>

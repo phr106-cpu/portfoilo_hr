@@ -29,6 +29,14 @@
   box-sizing: border-box;
 }
 
+/* body {
+  background-color: #444;
+  font-family: "Dela Gothic One", sans-serif;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(/portfoilo_hr/img/bg_star.png);
+} */
 body {
   background-color: #444;
   font-family: "Dela Gothic One", sans-serif;
@@ -37,6 +45,13 @@ body {
   height: 100vh;
   background-image: url(/portfoilo_hr/img/bg_star.png);
 }
+
+/* poster_page가 active일 때만 body 스크롤 허용 */
+body:has(.poster_page.active) {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 
 /* 공통 섹션 스타일 */
 section {
@@ -70,7 +85,7 @@ section.active {
 }
 
 .album_box img {
-  width: 450px;
+  width: 550px;
   height: auto;
   display: block;
 }
@@ -135,7 +150,7 @@ section.active {
 }
 
 .center_album {
-  width: 400px;
+  width: 450px;
   height: auto;
   z-index: 10;
   margin-top: 250px;
@@ -748,6 +763,8 @@ section.active {
   color: var(--pink);
   letter-spacing: 3px;
   line-height: 1;
+  font-family: var(--font-dela);
+
 }
 
 .project_name {
@@ -755,6 +772,7 @@ section.active {
   font-weight: 500;
   color: var(--pink);
   letter-spacing: 2px;
+  /* font-family: var(--font-dela); */
 }
 
 .project_content {
@@ -790,6 +808,7 @@ section.active {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
 }
 
 .track_item {
@@ -826,6 +845,7 @@ section.active {
   font-size: 20px;
   font-weight: 700;
   color: #0d4296;
+
 }
 
 .track_tag {
@@ -837,17 +857,23 @@ section.active {
   font-size: 14px;
   font-weight: 700;
   color: #ff0000;
+
 }
 
 .track_name {
   font-size: 20px;
   color: #0d4296;
+  font-family: "Cafe24Simplehae", sans-serif;
+  font-weight: 900;
+
 }
 
 .track_feat {
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 800;
   color: #0d4296;
+  font-family: "Cafe24Simplehae", sans-serif;
+
 }
 
 .track_play {
@@ -895,97 +921,183 @@ section.active {
 .poster_page {
   background-image: url(/portfoilo_hr/img/bg_star.png);
   padding: 0;
+  /* overflow-y: auto; */
 }
 
-/* poster 내부만 스크롤 되게 */
+/* 스크롤 컨테이너 */
 .poster_scroll {
   width: 100%;
-  height: 100vh;
-  overflow-y: auto;
-  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 80px 0;
 }
 
-/* 제목은 고정(sticky) */
-.poster_title_sticky {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  padding: 70px 0 30px;
-  text-align: center;
+/* 종이 배경 컨테이너 */
+.poster_paper_container {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  min-height: 250vh;
+}
 
-  font-size: 80px;
+/* 종이 배경 이미지 */
+.poster_paper_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+/* 타이틀 */
+.poster_title {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-size: 60px;
+  font-weight: 900;
   letter-spacing: 2px;
   color: #3b3b3b;
   text-transform: uppercase;
-}
-
-/* 스크롤 길이(타임라인) */
-.poster_stage {
-  position: relative;
-  height: 260vh;
-  /* 여기 늘리면 더 천천히 등장 */
+  text-align: center;
   width: 100%;
 }
 
-/* 공통: 처음엔 숨김 -> show 되면 등장 */
+/* 타임라인 스테이지 */
+.poster_stage {
+  position: relative;
+  width: 100%;
+  min-height: 200vh;
+  z-index: 2;
+  padding-top: 180px;
+}
+
+/* 공통 reveal 애니메이션 - 일단 다 보이게 */
 .poster_reveal {
   position: absolute;
-  left: 50%;
-  top: 260px;
-  transform: translateX(-50%) translateY(30px) scale(0.98);
-  opacity: 0;
-
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  will-change: opacity, transform;
-  z-index: 1;
+  opacity: 1;
+  /* 0에서 1로 변경 */
+  /* transition: opacity 0.7s ease, transform 0.7s ease; */
+  /* will-change: opacity, transform; */
 }
 
 .poster_reveal.show {
   opacity: 1;
-  transform: translateX(-50%) translateY(0) scale(1);
 }
 
-/* ====== 개별 위치/겹침(원하는대로 조절) ====== */
+/* ===== 개별 요소 위치 및 스타일 ===== */
+
+/* 위치 아이콘 - CHEONAN + HOME */
 .poster_loc {
-  width: 450px;
-  top: 280px;
-  z-index: 2;
+  width: 280px;
+  top: 12%;
+  left: 6%;
+  transform: translateY(30px);
 }
 
-.poster_path {
-  width: 900px;
-  top: 420px;
+.poster_loc.show {
+  transform: translateY(0);
+}
+
+/* 벡터 라인 공통 스타일 */
+.poster_vector {
+  width: 50px;
+  transform: scale(0.9);
+}
+
+.poster_vector.show {
+  transform: scale(1);
+}
+
+
+/* 첫 번째 벡터 */
+.poster_vector_1 {
+  top: 21%;
+  left: 27%;
   z-index: 3;
+  transform: rotate(-20deg) scale(0.9);
 }
 
-.poster_word_home {
-  width: 420px;
-  top: 520px;
-  left: 33%;
+
+.poster_vector_1.show {
+  transform: rotate(-20deg) scale(1);
+}
+
+/* 두 번째 벡터 */
+.poster_vector_2 {
+  top: 22%;
+  left: 35%;
+  z-index: 3;
+  transform: rotate(-35deg) scale(0.9);
+}
+
+.poster_vector_2.show {
+  transform: rotate(-30deg) scale(1);
+}
+
+/* 세 번째 벡터 */
+.poster_vector_3 {
+  top: 22.5%;
+  left: 43%;
+  z-index: 10;
+  transform: rotate(-40deg) scale(0.9);
+}
+
+.poster_vector_3.show {
+  transform: rotate(-40deg) scale(1);
+}
+
+/* 사진 공통 스타일 */
+.poster_photo {
+  transform: scale(0.95);
+}
+
+.poster_photo.show {
+  transform: scale(1);
+}
+
+/* 버스 정류장 사진 */
+.poster_photo_busstop {
+  width: 23%;
+  max-width: 320px;
+  top: 14%;
+  left: 49%;
   z-index: 4;
+  transform: rotate(-3deg) scale(0.95);
 }
 
-/* 사진들은 겹치게(살짝 offset + z-index) */
-.poster_photo_1 {
-  width: 520px;
-  top: 420px;
-  left: 62%;
-  z-index: 6;
-  transform: translateX(-50%) translateY(30px) rotate(-4deg) scale(0.98);
+.poster_photo_busstop.show {
+  transform: rotate(-3deg) scale(1);
 }
 
-.poster_photo_1.show {
-  transform: translateX(-50%) translateY(0) rotate(-4deg) scale(1);
-}
-
-.poster_photo_2 {
-  width: 500px;
-  top: 460px;
+/* 티켓 사진 (버스정류장 위에 약간 겹침) */
+.poster_photo_ticket {
+  width: 20%;
+  max-width: 300px;
+  top: 10%;
   left: 66%;
-  z-index: 7;
-  transform: translateX(-50%) translateY(30px) rotate(6deg) scale(0.98);
+  z-index: 5;
+  transform: rotate(5deg) scale(0.95);
 }
 
-.poster_photo_2.show {
-  transform: translateX(-50%) translateY(0) rotate(6deg) scale(1);
+.poster_photo_ticket.show {
+  transform: rotate(5deg) scale(1);
+}
+
+/* 버스 사진 */
+.poster_photo_bus {
+  width: 26%;
+  max-width: 340px;
+  top: 20%;
+  left: 70%;
+  z-index: 6;
+  transform: rotate(-2deg) scale(0.95);
+}
+
+.poster_photo_bus.show {
+  transform: rotate(-2deg) scale(1);
 }

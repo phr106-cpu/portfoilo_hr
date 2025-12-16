@@ -258,42 +258,66 @@
 })();
 
 // ===== POSTER 페이지로 이동 + 스크롤 reveal =====
-const posterItem = document.querySelector(".poster_item");
-const posterPage = document.querySelector(".poster_page");
-const posterScroll = document.getElementById("posterScroll");
-const posterReveals = document.querySelectorAll(".poster_reveal");
+document.addEventListener("DOMContentLoaded", function () {
+  const posterItem = document.querySelector(".poster_item");
+  const posterPage = document.querySelector(".poster_page");
+  const posterScroll = document.getElementById("posterScroll");
+  const posterReveals = document.querySelectorAll(".poster_reveal");
+  const album_contents = document.querySelector(".album_contents");
 
-function updatePosterReveal() {
-  if (!posterScroll) return;
+  function updatePosterReveal() {
+    const posterStage = document.getElementById("posterStage");
+    if (!posterStage) return;
 
-  const maxStep = posterReveals.length - 1;
-  const scrollTop = posterScroll.scrollTop;
-  const scrollMax = posterScroll.scrollHeight - posterScroll.clientHeight;
+    const stageRect = posterStage.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
 
-  const progress = scrollMax <= 0 ? 0 : scrollTop / scrollMax;
-  const currentStep = Math.floor(progress * (maxStep + 1));
+    const scrollProgress = Math.max(0, Math.min(1,
+      (viewportHeight - stageRect.top) / (viewportHeight + stageRect.height)
+    ));
 
-  posterReveals.forEach((el) => {
-    const step = Number(el.dataset.step);
-    if (step <= currentStep) el.classList.add("show");
-    else el.classList.remove("show");
+    const maxStep = posterReveals.length - 1;
+    const currentStep = Math.floor(scrollProgress * (maxStep + 1));
+
+    posterReveals.forEach((el) => {
+      const step = Number(el.dataset.step);
+      if (step <= currentStep) {
+        el.classList.add("show");
+      } else {
+        el.classList.remove("show");
+      }
+    });
+  }
+
+  // 윈도우 스크롤 이벤트
+  window.addEventListener("scroll", function () {
+    if (posterPage && posterPage.classList.contains("active")) {
+      updatePosterReveal();
+    }
   });
-}
 
-if (posterScroll) {
-  posterScroll.addEventListener("scroll", updatePosterReveal);
-}
+  if (posterItem && posterPage && album_contents) {
+    posterItem.addEventListener("click", function () {
+      console.log("포스터 아이템 클릭됨");
+      album_contents.classList.remove("active");
 
-if (posterItem && posterPage) {
+      setTimeout(function () {
+        posterPage.classList.add("active");
+        window.scrollTo(0, 0);
+        setTimeout(updatePosterReveal, 50);
+      }, 300);
+    });
+  }
+});
+if (posterItem && posterPage && album_contents) {
   posterItem.addEventListener("click", function () {
-    // album_contents -> poster_page
+    console.log("포스터 아이템 클릭됨");
     album_contents.classList.remove("active");
 
     setTimeout(function () {
       posterPage.classList.add("active");
-
-      // 포스터 들어갈 때 스크롤/등장 초기화
-      if (posterScroll) posterScroll.scrollTop = 0;
+      document.body.style.overflow = "auto"; // body 스크롤 허용
+      window.scrollTo(0, 0);
       setTimeout(updatePosterReveal, 50);
     }, 300);
   });
