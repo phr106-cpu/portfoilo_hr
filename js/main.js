@@ -70,13 +70,13 @@
         if (e.deltaY > 0) {
           e.preventDefault();
           isScrolling = true;
+
           unboxing_page.classList.add("scroll_down");
           album_contents.classList.add("scroll_up", "active");
 
-          // 애니메이션이 끝나기 전에 언박싱 페이지 숨기기
           setTimeout(function () {
             unboxing_page.classList.remove("active");
-          }, 300); // 애니메이션 절반 지점에서 숨기기
+          }, 300);
 
           setTimeout(function () {
             unboxing_page.classList.remove("scroll_down");
@@ -87,8 +87,6 @@
       });
     }
 
-
-
     // album_contents 스크롤 (위/아래 둘 다)
     if (album_contents) {
       album_contents.addEventListener("wheel", function (e) {
@@ -98,6 +96,7 @@
         if (e.deltaY < 0) {
           e.preventDefault();
           isScrolling = true;
+
           album_contents.classList.add("scroll_down_back");
           unboxing_page.classList.add("scroll_up_back", "active");
           setTimeout(function () {
@@ -111,6 +110,7 @@
         if (e.deltaY > 0) {
           e.preventDefault();
           isScrolling = true;
+
           album_contents.classList.add("scroll_down");
           box_animation_page.classList.add("scroll_up", "active");
 
@@ -120,13 +120,15 @@
             isScrolling = false;
           }, 600);
 
-          // GSAP 애니메이션 시작 (페이지 전환이 끝난 후)
+          // GSAP 애니메이션 시작 (한 번만 실행)
           setTimeout(function () {
-            if (typeof gsap !== "undefined" && !window.boxAnimationTL) {
-              window.boxAnimationTL = gsap.timeline();
-              window.boxAnimationTL.add(boxIn()).add(cardAnimation());
+            if (typeof gsap !== "undefined" && !window.boxAnimationPlayed) {
+              window.boxAnimationPlayed = true;
+              gsap.timeline()
+                .add(boxIn())
+                .add(cardAnimation(), "-=0.5"); // 카드 애니메이션을 한 번만 실행
             }
-          }, 800);
+          }, 400);
         }
       });
     }
@@ -376,7 +378,21 @@ function boxIn() {
 
 function cardAnimation() {
   let tl = gsap
-    .timeline({ repeat: -1 })
+    .timeline({
+      repeat: 0,
+      onComplete: function () {
+        // 카드 애니메이션 끝나면 Thanks 페이지로 자동 이동
+        setTimeout(function () {
+          const box_animation_page = document.querySelector(".box_animation_page");
+          const thanks_streaming_page = document.querySelector(".thanks_streaming_page");
+
+          if (box_animation_page && thanks_streaming_page) {
+            box_animation_page.classList.remove("active");
+            thanks_streaming_page.classList.add("active");
+          }
+        }, 500);
+      }
+    })
     .to(".box", { rotateY: 180, ease: "power2.inOut", duration: 0.8 })
     // 카드 5개 펼치기
     .to(
@@ -646,4 +662,41 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 300);
     });
   }
+});
+
+// ===== THANKS STREAMING 페이지 자동 애니메이션 =====
+document.addEventListener("DOMContentLoaded", function () {
+  const thanksPage = document.querySelector(".thanks_streaming_page");
+  const thanksTexts = document.querySelectorAll(".thanks_text");
+  const thanksSignImg = document.querySelector(".thanks_sign_img");
+
+  // Thanks 페이지가 활성화될 때 순차적으로 애니메이션
+  const observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (thanksPage.classList.contains("active")) {
+        // 각 텍스트를 순차적으로 표시
+        thanksTexts.forEach(function (text, index) {
+          setTimeout(function () {
+            text.classList.add("show");
+          }, index * 300); // 300ms 간격으로 순차 표시
+        });
+
+        // 싸인은 마지막 텍스트 바로 다음에 표시
+        setTimeout(function () {
+          if (thanksSignImg) {
+            thanksSignImg.classList.add("show");
+          }
+        }, thanksTexts.length * 300);
+
+        // 한 번만 실행되도록 observer 해제
+        observer.disconnect();
+      }
+    });
+  });
+
+  // thanksPage의 class 변경 감지
+  observer.observe(thanksPage, {
+    attributes: true,
+    attributeFilter: ["class"]
+  });
 });
