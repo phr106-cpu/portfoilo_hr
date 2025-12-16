@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/main_style.css" />
   <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
   <script src="js/main.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 
 <body>
@@ -107,6 +108,17 @@
     <!-- //.album_contents -->
   </div>
   <!-- //.wrap -->
+  <!-- ID 카드 팝업 -->
+  <div id="idcard_overlay" class="popup_overlay">
+    <button class="back_to_album_idcard">
+      <i class="fa-solid fa-angle-left"></i> ALBUM CONTENTS
+    </button>
+
+    <div class="idcard_container">
+      <img src="/portfoilo_hr/img/idcard.png" alt="Hyerin ID Card" class="idcard_image" />
+    </div>
+  </div>
+  <!-- //.idcard_overlay -->
   <!-- 팝업 모달 -->
   <div id="popup_overlay" class="popup_overlay">
     <div id="popup_modal" class="popup_modal">
@@ -224,6 +236,9 @@
   </section><!-- //.project_page -->
   <!-- POSTER 페이지 -->
   <section class="poster_page">
+    <button class="back_to_album_poster">
+      <i class="fa-solid fa-angle-left"></i> ALBUM CONTENTS
+    </button>
     <div class="poster_scroll" id="posterScroll">
       <!-- 종이 배경과 모든 콘텐츠를 담는 컨테이너 -->
       <div class="poster_paper_container">
@@ -306,6 +321,45 @@
 
 
 
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 박스 언박싱 애니메이션 섹션 -->
+  <section class="box_animation_page">
+    <div class="box_scene">
+      <div class="box">
+        <div class="box__flap box__flap--left"></div>
+        <div class="box__flap box__flap--right"></div>
+
+        <div class="box__back"></div>
+
+        <!-- 앨범 구성품 카드들 -->
+        <div class="card card--1"></div>
+        <div class="card card--2"></div>
+        <div class="card card--3"></div>
+        <div class="card card--4"></div>
+        <div class="card card--5"></div>
+
+        <div class="box__front"></div>
+        <div class="box__left"></div>
+        <div class="box__right"></div>
+        <div class="box__bottom"></div>
+
+        <div class="box__lid">
+          <div class="box__lid-inner">
+            <div class="box__lid-top">
+              <div class="box__lid-top-logo"></div>
+              <div class="box__lid-top-back"></div>
+            </div>
+            <div class="box__lid-flap">
+              <div class="box__lid-flap-shape">
+                <div class="box__lid-flap-shape-inner"></div>
+                <div class="box__lid-flap-shape-outer"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

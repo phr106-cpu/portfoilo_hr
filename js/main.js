@@ -11,6 +11,7 @@
     const album_contents = document.querySelector(".album_contents");
     const album_box = document.querySelector(".album_box");
     const hover_label = document.querySelector(".hover_label");
+    const box_animation_page = document.querySelector(".box_animation_page");
 
     let isScrolling = false;
     const labels = document.querySelectorAll(".item_hover_label");
@@ -62,16 +63,23 @@
       });
     }
 
-    // 스크롤
+    // unboxing 스크롤 (아래로만)
     if (unboxing_page) {
       unboxing_page.addEventListener("wheel", function (e) {
         if (!unboxing_page.classList.contains("active") || isScrolling) return;
         if (e.deltaY > 0) {
+          e.preventDefault();
           isScrolling = true;
           unboxing_page.classList.add("scroll_down");
           album_contents.classList.add("scroll_up", "active");
+
+          // 애니메이션이 끝나기 전에 언박싱 페이지 숨기기
           setTimeout(function () {
-            unboxing_page.classList.remove("active", "scroll_down");
+            unboxing_page.classList.remove("active");
+          }, 300); // 애니메이션 절반 지점에서 숨기기
+
+          setTimeout(function () {
+            unboxing_page.classList.remove("scroll_down");
             album_contents.classList.remove("scroll_up");
             isScrolling = false;
           }, 600);
@@ -79,10 +87,16 @@
       });
     }
 
+
+
+    // album_contents 스크롤 (위/아래 둘 다)
     if (album_contents) {
       album_contents.addEventListener("wheel", function (e) {
         if (!album_contents.classList.contains("active") || isScrolling) return;
+
+        // 위로 스크롤 (unboxing으로)
         if (e.deltaY < 0) {
+          e.preventDefault();
           isScrolling = true;
           album_contents.classList.add("scroll_down_back");
           unboxing_page.classList.add("scroll_up_back", "active");
@@ -91,6 +105,77 @@
             unboxing_page.classList.remove("scroll_up_back");
             isScrolling = false;
           }, 600);
+        }
+
+        // 아래로 스크롤 (박스 애니메이션으로)
+        if (e.deltaY > 0) {
+          e.preventDefault();
+          isScrolling = true;
+          album_contents.classList.add("scroll_down");
+          box_animation_page.classList.add("scroll_up", "active");
+
+          setTimeout(function () {
+            album_contents.classList.remove("scroll_down");
+            box_animation_page.classList.remove("scroll_up");
+            isScrolling = false;
+          }, 600);
+
+          // GSAP 애니메이션 시작 (페이지 전환이 끝난 후)
+          setTimeout(function () {
+            if (typeof gsap !== "undefined" && !window.boxAnimationTL) {
+              window.boxAnimationTL = gsap.timeline();
+              window.boxAnimationTL.add(boxIn()).add(cardAnimation());
+            }
+          }, 800);
+        }
+      });
+    }
+
+    // 박스 애니메이션 페이지에서 위로 스크롤
+    if (box_animation_page) {
+      box_animation_page.addEventListener("wheel", function (e) {
+        if (!box_animation_page.classList.contains("active") || isScrolling)
+          return;
+        if (e.deltaY < 0) {
+          e.preventDefault();
+          isScrolling = true;
+          box_animation_page.classList.add("scroll_down_back");
+          album_contents.classList.add("scroll_up_back", "active");
+          setTimeout(function () {
+            box_animation_page.classList.remove("active", "scroll_down_back");
+            album_contents.classList.remove("scroll_up_back");
+            isScrolling = false;
+          }, 600);
+        }
+      });
+    }
+
+    // ===== ID 카드 팝업 =====
+    const keyringItem = document.querySelector(".keyring_item");
+    const idcardOverlay = document.getElementById("idcard_overlay");
+    const backToAlbumIdcard = document.querySelector(".back_to_album_idcard");
+
+    // 키링 클릭
+    if (keyringItem && idcardOverlay) {
+      keyringItem.addEventListener("click", function (e) {
+        if (!e.target.classList.contains("item_hover_label")) {
+          idcardOverlay.classList.add("active");
+        }
+      });
+    }
+
+    // 뒤로가기 버튼
+    if (backToAlbumIdcard && idcardOverlay) {
+      backToAlbumIdcard.addEventListener("click", function () {
+        idcardOverlay.classList.remove("active");
+      });
+    }
+
+    // 오버레이 클릭시 닫기
+    if (idcardOverlay) {
+      idcardOverlay.addEventListener("click", function (e) {
+        if (e.target === idcardOverlay) {
+          idcardOverlay.classList.remove("active");
         }
       });
     }
@@ -257,6 +342,234 @@
   });
 })();
 
+function boxIn() {
+  let tl = gsap.timeline()
+    .fromTo(".box",
+      { rotationY: -540, y: "100vh" },
+      { duration: 2, rotationY: 0, y: "10vh", ease: "power2" }
+    )
+    .to(".box__lid", {
+      rotateX: -225,
+      duration: 0.5,
+      ease: "sine.inOut",
+      y: 2 // 👈 이 부분 추가 (뚜껑을 아래로 3px)
+    }, "-=1.4")
+    .to(".box__lid-flap", {
+      rotateX: 60,
+      duration: 0.5,
+      ease: "sine.inOut"
+    }, "-=1.2")
+    .to(".box__flap--left", {
+      rotateX: "-=135",
+      duration: 0.5,
+      ease: "sine.inOut",
+      transformOrigin: "50% 100%"
+    }, "-=1")
+    .to(".box__flap--right", {
+      rotateX: "-=135",
+      duration: 0.5,
+      ease: "sine.inOut",
+      transformOrigin: "50% 100%"
+    }, "-=1");
+  return tl;
+}
+
+function cardAnimation() {
+  let tl = gsap
+    .timeline({ repeat: -1 })
+    .to(".box", { rotateY: 180, ease: "power2.inOut", duration: 0.8 })
+    // 카드 5개 펼치기
+    .to(
+      ".card--1",
+      {
+        keyframes: [
+          {
+            duration: 0.4,
+            y: "-155%",
+            transformOrigin: "center bottom",
+            ease: "sine",
+          },
+          {
+            duration: 0.6,
+            rotation: 50,
+            x: "40%",
+            ease: "power2",
+            delay: -0.25,
+          },
+        ],
+      },
+      0.2
+    )
+    .to(
+      ".card--2",
+      {
+        keyframes: [
+          {
+            duration: 0.4,
+            y: "-160%",
+            transformOrigin: "center bottom",
+            ease: "sine",
+          },
+          {
+            duration: 0.6,
+            rotation: 25,
+            x: "20%",
+            ease: "power2",
+            delay: -0.25,
+          },
+        ],
+      },
+      0.2
+    )
+    .to(
+      ".card--3",
+      {
+        keyframes: [
+          {
+            duration: 0.4,
+            y: "-160%",
+            transformOrigin: "center bottom",
+            ease: "sine",
+          },
+          {
+            duration: 0.6,
+            rotation: 0,
+            x: "0%",
+            ease: "power2",
+            delay: -0.25,
+          },
+        ],
+      },
+      0.2
+    )
+    .to(
+      ".card--4",
+      {
+        keyframes: [
+          {
+            duration: 0.4,
+            y: "-160%",
+            transformOrigin: "center bottom",
+            ease: "sine",
+          },
+          {
+            duration: 0.6,
+            rotation: -25,
+            x: "-20%",
+            ease: "power2",
+            delay: -0.25,
+          },
+        ],
+      },
+      0.2
+    )
+    .to(
+      ".card--5",
+      {
+        keyframes: [
+          {
+            duration: 0.4,
+            y: "-155%",
+            transformOrigin: "center bottom",
+            ease: "sine",
+          },
+          {
+            duration: 0.6,
+            rotation: -50,
+            x: "-40%",
+            ease: "power2",
+            delay: -0.25,
+          },
+        ],
+      },
+      0.2
+    )
+    // 카드 5개 다시 넣기
+    .to(
+      ".card--1",
+      {
+        keyframes: [
+          { duration: 0.6, rotation: 0, x: "0%", ease: "power2.in" },
+          {
+            duration: 0.4,
+            y: "0%",
+            transformOrigin: "center bottom",
+            ease: "sine.in",
+            delay: -0.25,
+          },
+        ],
+      },
+      1.4
+    )
+    .to(
+      ".card--2",
+      {
+        keyframes: [
+          { duration: 0.6, rotation: 0, x: "0%", ease: "power2.in" },
+          {
+            duration: 0.4,
+            y: "0%",
+            transformOrigin: "center bottom",
+            ease: "sine.in",
+            delay: -0.25,
+          },
+        ],
+      },
+      1.4
+    )
+    .to(
+      ".card--3",
+      {
+        keyframes: [
+          { duration: 0.6, rotation: 0, x: "0%", ease: "power2.in" },
+          {
+            duration: 0.4,
+            y: "0%",
+            transformOrigin: "center bottom",
+            ease: "sine.in",
+            delay: -0.25,
+          },
+        ],
+      },
+      1.4
+    )
+    .to(
+      ".card--4",
+      {
+        keyframes: [
+          { duration: 0.6, rotation: 0, x: "0%", ease: "power2.in" },
+          {
+            duration: 0.4,
+            y: "0%",
+            transformOrigin: "center bottom",
+            ease: "sine.in",
+            delay: -0.25,
+          },
+        ],
+      },
+      1.4
+    )
+    .to(
+      ".card--5",
+      {
+        keyframes: [
+          { duration: 0.6, rotation: 0, x: "0%", ease: "power2.in" },
+          {
+            duration: 0.4,
+            y: "0%",
+            transformOrigin: "center bottom",
+            ease: "sine.in",
+            delay: -0.25,
+          },
+        ],
+      },
+      1.4
+    )
+    .to(".box", { rotateY: 360, ease: "power2.inOut", duration: 0.8 }, 1.6);
+
+  return tl;
+}
+
 // ===== POSTER 페이지로 이동 + 스크롤 reveal =====
 document.addEventListener("DOMContentLoaded", function () {
   const posterItem = document.querySelector(".poster_item");
@@ -273,12 +586,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const viewportHeight = window.innerHeight;
 
     // 스크롤 진행도 계산 (0 ~ 1)
-    const scrollProgress = Math.max(0, Math.min(1,
-      (viewportHeight - stageRect.top) / (viewportHeight + stageRect.height)
-    ));
+    const scrollProgress = Math.max(
+      0,
+      Math.min(
+        1,
+        (viewportHeight - stageRect.top) /
+        (viewportHeight * 3 + stageRect.height)
+      )
+    );
 
-    // 현재 스텝 계산 (총 27개 요소: 0~26)
-    const maxStep = 26;
+    // 현재 스텝 계산
+    const maxStep = 19;
     const currentStep = Math.floor(scrollProgress * (maxStep + 1));
 
     posterReveals.forEach((el) => {
@@ -305,13 +623,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
       setTimeout(function () {
         posterPage.classList.add("active");
-        document.body.style.overflow = "auto"; // body 스크롤 허용
+        document.body.style.overflow = "auto";
         window.scrollTo(0, 0);
 
-        // 처음 페이지 로드시 location(0)만 보이게
         setTimeout(function () {
           updatePosterReveal();
         }, 50);
+      }, 300);
+    });
+  }
+
+  // 포스터 페이지 뒤로가기 버튼
+  const backToAlbumPoster = document.querySelector(".back_to_album_poster");
+  if (backToAlbumPoster && posterPage && album_contents) {
+    backToAlbumPoster.addEventListener("click", function () {
+      posterPage.classList.remove("active");
+      document.body.style.overflow = "hidden";
+      window.scrollTo(0, 0);
+
+      setTimeout(function () {
+        album_contents.classList.add("active");
       }, 300);
     });
   }
