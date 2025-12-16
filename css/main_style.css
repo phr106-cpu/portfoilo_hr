@@ -980,8 +980,7 @@ section.active {
 .poster_reveal {
   position: absolute;
   opacity: 0;
-  /* 1에서 0으로 변경 - 처음에 안 보이게 */
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition: opacity 0.3s ease, transform 0.7s ease;
   will-change: opacity, transform;
 }
 
